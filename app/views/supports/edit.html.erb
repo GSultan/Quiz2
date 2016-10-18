@@ -1,0 +1,30 @@
+<h1>Edit Ticket</h1>
+
+<%# if the object you pass to the  form_for is persisted (has an id in the DB) then rails will automatically make the form submit a PATCH request with URL in this case question_path (@question ) (same as show link with PATCH request).
+@question variable is persisted in this case so it will have a title and a body so those will be pre-populated in the respective field %>
+
+<%= form_for @support do |f| %>
+<div class="">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+</div>
+<div class="">
+  <%= f.label :email %>
+  <%= f.email_field :email %>
+</div>
+<div class="">
+  <%= f.label :department %>
+  <%= f.radio_button(:department, "Sales") %>
+  <%= f.label(:sales, "Sales") %>
+  <%= f.radio_button(:department, "Marketing") %>
+  <%= f.label(:marketing, "Marketing") %>
+  <%= f.radio_button(:department, "Technical") %>
+  <%= f.label(:technical, "Technical") %>
+</div>
+<div class="">
+    <%= f.label :message %>
+    <%= f.text_area  :message %>
+</div>
+
+  <%= f.submit "Submit Edit" %>
+<% end %>

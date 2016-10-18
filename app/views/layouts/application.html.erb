@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Quiz2</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <%= link_to 'New Support Request', home_path %>
+    |
+    <!-- <a href='/contact'>Contact Us</a> -->
+    <%#= link_to 'Contact Us', contact_path({something: 'hello world'}) %>
+    <%= link_to 'Display Support Requests', supports_path %>
+
+    <hr>
+    <%= yield %>
+  </body>
+</html>

@@ -1,0 +1,31 @@
+<%= image_tag("http://mattijsdevroedt.be/LDNiphoneography/wp-content/uploads/2013/09/round-profile.png", size: "100x100") %>
+<h1>How can I help you?</h1>
+<hr>
+
+<h2>New Ticket</h2>
+<%= form_for @support do |f| %>
+<div class="">
+    <%= f.label "Name* " %>
+    <%= f.text_field :name %>
+</div>
+<div class="">
+  <%= f.label "Email* " %>
+  <%= f.email_field :email %>
+</div>
+<div class="">
+  <%= f.label :department %>
+  <%= f.radio_button(:department, "Sales") %>
+  <%= f.label(:sales, "Sales") %>
+  <%= f.radio_button(:department, "Marketing") %>
+  <%= f.label(:marketing, "Marketing") %>
+  <%= f.radio_button(:department, "Technical") %>
+  <%= f.label(:technical, "Technical") %>
+</div>
+<div class="">
+    <%= f.label :message %>
+    <%= f.text_area  :message %>
+</div>
+
+  <%= f.submit "Submit Ticket" %>
+<% end %>
+<br>

@@ -1,0 +1,43 @@
+<h1>All Support Requests</h1>
+<!-- Give it a default view -->
+
+<%= form_tag supports_path, :method => 'get' do %>
+  <p>
+    <%= text_field_tag 'search', params[:search] %>
+    <%= submit_tag "Search", :name => nil %>
+  </p>
+<% end %>
+
+<table border="1" width="100%">
+  <tr bgcolor="lavender">
+    <th>ID</th>
+    <th>Name</th>
+    <th>E-Mail</th>
+    <th>Department</th>
+    <th>Message</th>
+    <th>Actions</th>
+    <th>Done</th>
+
+
+  </tr>
+<% @supports.each do |data| %>
+  <tr>
+    <td><%= link_to data.id, support_path(data.id) %></td>
+    <td><%= link_to data.name, support_path(data.id) %></td>
+    <td><%= link_to data.email, support_path(data.id) %></td>
+    <td><%= link_to data.department, support_path(data.id) %></td>
+    <td><%= link_to data.message, support_path(data.id) %></td>
+    <td><div><%= button_to 'Edit Entry', edit_support_path(data.id), {method: "get" } %></div>
+        <div><%= button_to "Delete Entry", support_path(data.id),
+                          {method: :delete,
+                          data: { confirm: 'Are you sure?'}}  %>
+                          <%= button_to "Done?",
+                          toggle_support_path(data.id), {method: :patch} %></div>
+        </td>
+    <td>
+      <%= link_to data.done_status, support_path(data.id) %>
+    </td>
+  </tr>
+<% end %>
+<%= paginate @supports %>
+</table>
